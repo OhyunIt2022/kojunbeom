@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if bookmark %}
+        <h1>북마크 수정하기_새로 만들었음</h1>
+    {% else %}
+        <h1>북마크 등록하기</h1>
+    {% endif %}
+        <form method="post">
+        {% csrf_token %}
+        <!-- <input type="text" name="title" placeholder="북마크 제목">
+        <input type="text" name="url" placeholder="북마크 url">
+        <input type="text" name="memo" placeholder="북마크 메모"> -->
+        {{ form.as_p }}
+        <input type="submit" value="북마크 등록">
+    </form>
+    
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="포스트 요청 보내기">
+    </form>
+    
+</body>
+</html>

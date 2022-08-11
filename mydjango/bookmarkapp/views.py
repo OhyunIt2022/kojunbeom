@@ -8,7 +8,7 @@ from django.urls import URLPattern
 def index(request):
     return HttpResponse('<h1> Hello World!</h1>')
 
-from bookmarks.models import Bookmark
+from bookmarkapp.models import Bookmark
 def bookmark_list(request):
     bookmark_list = Bookmark.objects.all()
     context = {'bookmark_list' :bookmark_list}
@@ -37,7 +37,7 @@ def bookmark_update(request, pk):
         form = BookmarkFrom(request.POST, instance=bookmark)
         if form.is_valid():
             bookmark = form.save()
-            return redirect('bookmarks:detail', bookmark.id)
+            return redirect('bookmarkapp:detail', bookmark.id)
     else:
         form = BookmarkFrom(instance=bookmark)
         context['form'] = form
@@ -69,7 +69,7 @@ def bookmark_create(request):
         form = BookmarkFrom(request.POST)
         if form.is_valid():
             bookmark = form.save()
-            return redirect('bookmarks:detail', bookmark.id)
+            return redirect('bookmarkapp:detail', bookmark.id)
     else:
         form = BookmarkFrom()
         context['form'] = form
@@ -89,31 +89,31 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, U
 class BookmarkListView(ListView):  #(상속받을 값을 적음)
         model = Bookmark           #모델 정하기
         context_object_name = 'bookmark_list'   #context(변수명) 정하기
-        tmeplate_name = 'bookmark_list.html'  #어떤 templates연결한건지 정하기
+        # tmeplate_name = 'bookmark_list.html'  #어떤 templates연결한건지 정하기
 
 
 class BookmarkDetailView(DetailView):
     model = Bookmark
     context_object_name = 'bookmark'
-    template_name = 'bookmark_detail.html'
+    # template_name = 'bookmark_detail.html'
 
 from django.urls import reverse_lazy
 class BookmarkCreateView(CreateView):
     model = Bookmark
     form_class = BookmarkFrom
-    template_name = 'bookmark_create.html'  
-    success_url = reverse_lazy('bookmarks:list')
+    # template_name = 'bookmark_create.html'  
+    success_url = reverse_lazy('bookmarkapp:list')
 
 class BookmarkUpdateView(UpdateView):
     model = Bookmark
-    template_name = 'bookmark_update.html'
+    # template_name = 'bookmark_update.html'
     form_class = BookmarkFrom
-    success_url = reverse_lazy('bookmarks:list')
+    success_url = reverse_lazy('bookmarkapp:list')
     context_object_name = 'bookmark'
 
 class BookmarkDeleteView(DeleteView):
     model = Bookmark
-    template_name = 'bookmark_delete.html'
+    # template_name = 'templates/bookmarkapp/bookmark_delete.html'
     form_class = BookmarkFrom
-    success_url = reverse_lazy('bookmarks:list')
+    success_url = reverse_lazy('bookmarkapp:list')
     context_object_name = 'bookmark'

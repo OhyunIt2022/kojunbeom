@@ -15,26 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from bookmarks import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
-    path('bookmark/', include('bookmarks.urls'))
-    # path('bookmark/' , views.bookmark_list),
-    # path('bookmark/<int:pk>/' , views.bookmark_detail),
-    # path('bookmark/create/', views.bookmark_create),
-    # path('bookmark/update/<int:pk>/', views.bookmark_update),
-    # path('bookmark/delete/<int:pk>/',views.bookmark_delete)
+    path('bookmark/',include('bookmarkapp.urls'))
 ]
-
-# ~~/bookmark/
-# <h1> 북마크 리스트</h1> 
-# - 네이버
-# - 다음
-# - 오현고홈페이지
-
-# ~~/bookmark/1/
-# <h1>북마크 제목</h1>
-# - url : ~~
-# - memo : ~~홈페이지 입니다

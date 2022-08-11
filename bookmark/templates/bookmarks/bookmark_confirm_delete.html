@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>북마크 삭제</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <p>북마크를 삭제하시겠습니까?</p>
+        <input type="submit" value="네">
+    </form>
+    <a href="{% url 'bookmarks:detail' bookmark.id %}"> 아니요</a>
+</body>
+</html>

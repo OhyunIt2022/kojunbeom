@@ -11,13 +11,13 @@
     <ul>
         {% if bookmark_list %}
             {% for i in bookmark_list %}
-                <li><a href="{% url 'bookmarks:detail' i.id %}">{{ i.title }}</a></li>
+                <li><a href="{% url 'bookmarkapp:detail' i.id %}">{{ i.title }}</a></li>
             {% endfor %}
         {% else %}
         <p>북마크가 없습니다!</p>
         {% endif %}
     </ul>
-    <a href="{% url 'bookmarks:create' %}">북마크 만들기페이지</a>
+    <a href="{% url 'bookmarkapp:create' %}">북마크 만들기페이지</a>
 </body>
 </html>
 
